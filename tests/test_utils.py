@@ -63,6 +63,11 @@ class UtilsTestCase(unittest.TestCase):
         self.assertIsNone(utils.check_word(player, word, 'w'))
         self.assertFalse(utils.check_word(player, word, 'someWord'))
 
+    @unittest.mock.patch('utils.settings.MIN_WORD_LENGTH', 3)
+    def test_check_user_input(self):
+        self.assertTrue(utils.check_user_input('word'))
+        self.assertFalse(utils.check_user_input('wo'))
+
 
 if __name__ == '__main__':
     unittest.main()

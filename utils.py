@@ -60,6 +60,10 @@ def check_stop_word(word_str: str) -> bool:
     return word_str.lower() in [wrd.lower() for wrd in settings.STOP_WORDS]
 
 
+def check_user_input(user_input: str) -> bool:
+    return len(user_input) >= settings.MIN_WORD_LENGTH
+
+
 def check_word(player: entities.Player, word: entities.BasicWord, subword_str: str) -> bool | None:
     """
     Checking word
