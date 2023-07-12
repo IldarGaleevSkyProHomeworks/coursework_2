@@ -46,3 +46,11 @@ def get_word_generator(words_source: list[entities.BasicWord]) -> Generator[enti
             random.shuffle(word_pool)
 
         yield word_pool.pop()
+
+
+def print_word_prompt(word: entities.BasicWord) -> None:
+    stop_words_str = ', '.join([f'"{w}"' for w in settings.STOP_WORDS])
+    print(
+        f'Составьте {word.subwords_count} слов из слова {word.word.upper()}\n'
+        f'Слова должны быть не короче {settings.MIN_WORD_LENGTH} букв\n'
+        f'Чтобы закончить игру, угадайте все слова или напишите одно из слов: {stop_words_str}')
