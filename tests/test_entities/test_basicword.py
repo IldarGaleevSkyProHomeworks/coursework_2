@@ -33,6 +33,9 @@ class BasicWordTestCase(unittest.TestCase):
 
         self.assertFalse(self.basic_word_instance_for_test.is_contains(no_contained_subword))
 
+    def test_word_value(self):
+        self.assertEqual(self.basic_word_instance_for_test.word, self.json_test_data_item['word'])
+
 
 if __name__ == '__main__':
     unittest.main()

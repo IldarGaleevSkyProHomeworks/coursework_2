@@ -31,6 +31,14 @@ class BasicWord:
 
         return len(self._subwords)
 
+    @property
+    def word(self) -> str:
+        """
+        Word value
+        """
+
+        return self._word
+
     def __str__(self) -> str:
         return self._word
 
