@@ -5,6 +5,15 @@ import settings
 import datasource
 import entities
 
+# ANSI Escape Sequences
+# https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
+ESC_FG = '\x1B[38;5;{}m'
+FG_RED = ESC_FG.format(1)
+FG_GREEN = ESC_FG.format(2)
+FG_YELLOW = ESC_FG.format(3)
+FG_MAGENTA = ESC_FG.format(5)
+FG_RESET = '\x1B[0m'
+
 
 def get_data() -> list[entities.BasicWord]:
     """
@@ -51,8 +60,8 @@ def get_word_generator(words_source: list[entities.BasicWord]) -> Generator[enti
 def print_word_prompt(word: entities.BasicWord) -> None:
     stop_words_str = ', '.join([f'"{w}"' for w in settings.STOP_WORDS])
     print(
-        f'Составьте {word.subwords_count} слов из слова {word.word.upper()}\n'
-        f'Слова должны быть не короче {settings.MIN_WORD_LENGTH} букв\n'
+        f'Составьте {FG_GREEN}{word.subwords_count}{FG_RESET} слов из слова {FG_GREEN}{word.word.upper()}{FG_RESET}\n'
+        f'Слова должны быть не короче {FG_MAGENTA}{settings.MIN_WORD_LENGTH}{FG_RESET} букв\n'
         f'Чтобы закончить игру, угадайте все слова или напишите одно из слов: {stop_words_str}')
 
 
