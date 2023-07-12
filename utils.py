@@ -21,3 +21,15 @@ def get_data() -> list[entities.BasicWord]:
         raise Exception('Data not found')
 
     return [entities.BasicWord(word_item['word'], word_item['subwords']) for word_item in data_result]
+
+
+def get_player() -> entities.Player:
+    while True:
+        player_name = input('Введите имя игрока: ').strip()
+        if player_name:
+            break
+        else:
+            print('Имя не может быть пустым!')
+
+    player = entities.Player(player_name)
+    return player
