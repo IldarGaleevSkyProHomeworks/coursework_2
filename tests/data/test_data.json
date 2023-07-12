@@ -1,0 +1,11 @@
+[{
+    "word": "word",
+     "subwords":  [
+         "wo", "or", "dw"
+     ]},
+  {
+    "word": "second",
+     "subwords":  [
+         "se", "ec", "co", "on", "nd", "ds"
+     ]}
+]
