@@ -49,6 +49,12 @@ class UtilsTestCase(unittest.TestCase):
         self.assertNotEqual(word1, word2)
         self.assertEqual(word1, word3)
 
+    @unittest.mock.patch('utils.settings.STOP_WORDS', ['stop', 'СТОП'])
+    def test_check_stop_word(self):
+        self.assertTrue(utils.check_stop_word('стоп'))
+        self.assertTrue(utils.check_stop_word('StOp'))
+        self.assertFalse(utils.check_stop_word('SomeWord'))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -54,3 +54,7 @@ def print_word_prompt(word: entities.BasicWord) -> None:
         f'Составьте {word.subwords_count} слов из слова {word.word.upper()}\n'
         f'Слова должны быть не короче {settings.MIN_WORD_LENGTH} букв\n'
         f'Чтобы закончить игру, угадайте все слова или напишите одно из слов: {stop_words_str}')
+
+
+def check_stop_word(word_str: str) -> bool:
+    return word_str.lower() in [wrd.lower() for wrd in settings.STOP_WORDS]
