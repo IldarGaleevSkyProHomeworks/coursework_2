@@ -58,3 +58,22 @@ def print_word_prompt(word: entities.BasicWord) -> None:
 
 def check_stop_word(word_str: str) -> bool:
     return word_str.lower() in [wrd.lower() for wrd in settings.STOP_WORDS]
+
+
+def check_word(player: entities.Player, word: entities.BasicWord, subword_str: str) -> bool | None:
+    """
+    Checking word
+    :param player: player
+    :param word: word object
+    :param subword_str: checked word
+    :return: 'True' if the word contains subword_str, 'False' otherwise. 'None' if already used
+    """
+
+    if player.is_usedword(subword_str):
+        return None
+
+    if word.is_contains(subword_str):
+        player.add_usedword(subword_str)
+        return True
+
+    return False

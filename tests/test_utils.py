@@ -5,7 +5,7 @@ import unittest.mock
 
 import datasource
 import utils
-from entities import BasicWord
+from entities import BasicWord, Player
 
 
 class UtilsTestCase(unittest.TestCase):
@@ -54,6 +54,14 @@ class UtilsTestCase(unittest.TestCase):
         self.assertTrue(utils.check_stop_word('стоп'))
         self.assertTrue(utils.check_stop_word('StOp'))
         self.assertFalse(utils.check_stop_word('SomeWord'))
+
+    def test_check_word(self):
+        player = Player('Player')
+        word = BasicWord('word', ['w', 'r'])
+
+        self.assertTrue(utils.check_word(player, word, 'w'))
+        self.assertIsNone(utils.check_word(player, word, 'w'))
+        self.assertFalse(utils.check_word(player, word, 'someWord'))
 
 
 if __name__ == '__main__':
