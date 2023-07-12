@@ -1,3 +1,6 @@
+import random
+from collections.abc import Generator
+
 import settings
 import datasource
 import entities
@@ -33,3 +36,13 @@ def get_player() -> entities.Player:
 
     player = entities.Player(player_name)
     return player
+
+
+def get_word_generator(words_source: list[entities.BasicWord]) -> Generator[entities.BasicWord]:
+    word_pool = []
+    while True:
+        if not word_pool:
+            word_pool = words_source.copy()
+            random.shuffle(word_pool)
+
+        yield word_pool.pop()

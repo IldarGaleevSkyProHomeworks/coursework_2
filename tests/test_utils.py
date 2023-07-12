@@ -1,5 +1,6 @@
 import os
 import json
+import random
 import unittest.mock
 
 import datasource
@@ -29,6 +30,24 @@ class UtilsTestCase(unittest.TestCase):
             utils.get_data()
 
         self.assertEqual(context.exception.args[0], 'Data not found')
+
+    @unittest.mock.patch.object(random, 'shuffle')
+    def test_get_word_generator(self, _):
+
+        words_source = [
+            BasicWord('word1', []),
+            BasicWord('word2', [])
+        ]
+
+        word_generator = utils.get_word_generator(words_source)
+
+        word1 = next(word_generator)
+        word2 = next(word_generator)
+        word3 = next(word_generator)
+
+        self.assertIsInstance(word1, BasicWord)
+        self.assertNotEqual(word1, word2)
+        self.assertEqual(word1, word3)
 
 
 if __name__ == '__main__':
