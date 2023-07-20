@@ -1,3 +1,4 @@
+[![Python application](https://github.com/IldarGaleevSkyProHomeworks/coursework_2/actions/workflows/python-app.yml/badge.svg)](https://github.com/IldarGaleevSkyProHomeworks/coursework_2/actions/workflows/python-app.yml)
 # Курс 2. Курсовая работа
 
 # Игра в слова.
